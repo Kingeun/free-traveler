@@ -1,6 +1,6 @@
 {
   "schema_version": "traveler-wave-state-v1",
-  "generated_at": "2026-09-17T01:33:43Z",
+  "generated_at": "2026-09-17T11:28:50Z",
   "waves": [
     {
       "wave_id": "W01",
@@ -12,9 +12,16 @@
         "DATA-REPRESENTATIVE",
         "DATA-SAFETY"
       ],
-      "status": "pending",
+      "status": "blocked",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "task_status": {
+        "COMP-GLOBAL-DESIGN-TOKENS": "blocked",
+        "COMP-GLOBAL-EMPTY-STATE": "pending",
+        "DATA-DESTINATIONS": "pending",
+        "DATA-REPRESENTATIVE": "pending",
+        "DATA-SAFETY": "pending"
+      }
     },
     {
       "wave_id": "W02",

@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+build
+*.tsbuildinfo
+
+# Traveler 규칙: 요구사항·Task·Wave 문서는 format:check 대상에서 제외한다.
+docs/
+TASKS/
+tasks/
+design-reference/
+.claude/
