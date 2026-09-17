@@ -1,0 +1,13 @@
+{
+  "harness_schema": "traveler-screen-route-v1",
+  "ok": true,
+  "violations": [],
+  "screen_count": 5,
+  "requirement_count": 114,
+  "src_app_files": [
+    "src/app/favicon.ico",
+    "src/app/globals.css",
+    "src/app/layout.tsx",
+    "src/app/page.tsx"
+  ]
+}

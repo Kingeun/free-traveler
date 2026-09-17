@@ -1,0 +1,340 @@
+{
+  "schema_version": "traveler-screen-route-v1",
+  "framework": "nextjs-app-router",
+  "source_documents": [
+    "docs/03_UI_COVERAGE_ANALYSIS.md",
+    "docs/04_UIUX_PLAN.md",
+    "docs/STITCH_VALIDATION_REPORT.md",
+    "design-reference/D-001/DESIGN.md"
+  ],
+  "screens": [
+    {
+      "id": "SCR-001",
+      "name": "메인",
+      "category": "core",
+      "route": "/",
+      "page_entry": "src/app/page.tsx",
+      "mobile_variant": true,
+      "starter_template_forbidden": true,
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "section_order": [
+        "검색 Hero",
+        "국내 인기 여행지 (Card x6)",
+        "해외 인기 여행지 (Card x6)",
+        "여행 동기·테마 (Chip x6)",
+        "국가별 주의사항 (Card x6)",
+        "최근 동행글 (Card x3 또는 Empty State)",
+        "free_traveler 요약 (좌우 분할 + CTA)"
+      ],
+      "key_components": [
+        "Header",
+        "Footer",
+        "SearchBar(pill, keyword-only)",
+        "DestinationCard",
+        "ThemeChip",
+        "SafetyInfoCard",
+        "DestinationDetailDrawer",
+        "SafetyInfoDrawer",
+        "EmptyStateBlock",
+        "FounderIntroBand"
+      ],
+      "states": ["loading", "success", "empty", "error"],
+      "user_actions": [
+        "키워드 검색",
+        "국내/해외 여행지 Card 선택 → 상세 Drawer",
+        "즐겨찾기 등록/해제 (localStorage)",
+        "테마 Chip 선택 → 필터 적용",
+        "국가 안전 Card 선택 → 안전 Drawer",
+        "동행/대표소개 CTA 클릭"
+      ],
+      "desktop_mobile_rules": {
+        "desktop_reference_px": 1440,
+        "mobile_reference_px": 390,
+        "content_max_width_px": "1200-1280",
+        "section_padding_desktop_px": "64-96",
+        "section_padding_mobile_px": "40-64",
+        "card_grid_columns": { "desktop": 3, "mobile": 1 },
+        "hero_height_rule": "다음 Section 제목이 1440px 데스크톱 폴드 안에 보이도록 높이 제한"
+      },
+      "forbidden_features": [
+        "별점/리뷰 점수 표시",
+        "실시간 가격 표시",
+        "Airbnb 상표 요소",
+        "날짜·인원 결합 예약형 검색 위젯",
+        "광고 배너",
+        "Lorem ipsum / 준비 중 / 정보 확인 필요",
+        "의미 없는 빈 Card"
+      ]
+    },
+    {
+      "id": "SCR-002",
+      "name": "대표 소개",
+      "category": "supporting",
+      "route": "/about",
+      "page_entry": "src/app/about/page.tsx",
+      "mobile_variant": false,
+      "starter_template_forbidden": false,
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "section_order": [
+        "Hero (대표 사진 + 소개 문장)",
+        "여행 지표 (50+ Trips / 30+ Countries)",
+        "소개·철학 (좌우 분할, 2~4 문단)",
+        "여행 Timeline (6개 이상 시점)",
+        "방문 국가 (30개, 권역별)",
+        "Gallery (사진 8장 이상)",
+        "기억에 남는 여행지 (Card x4) + CTA"
+      ],
+      "key_components": [
+        "Header",
+        "Footer",
+        "Hero",
+        "StatPill",
+        "SplitIntroBlock",
+        "VerticalTimeline",
+        "RegionChipGroup",
+        "PhotoGalleryGrid",
+        "DestinationCard",
+        "CtaBanner"
+      ],
+      "states": ["loading", "success", "error"],
+      "user_actions": [
+        "Timeline·Gallery 열람",
+        "방문국가 Chip 선택 → SCR-001 필터 이동",
+        "추천 여행지 Card 선택 → SCR-001 상세 Drawer",
+        "CTA 버튼 클릭"
+      ],
+      "desktop_mobile_rules": {
+        "desktop_reference_px": 1440,
+        "mobile_reference_px": null,
+        "content_max_width_px": "1200-1280",
+        "section_padding_desktop_px": "64-96",
+        "section_padding_mobile_px": null,
+        "note": "이번 범위에서 Mobile 변형 Screen은 승인 대상 아님"
+      },
+      "forbidden_features": [
+        "별점 표시",
+        "가격 표시",
+        "Airbnb 상표 요소",
+        "의미 없는 Gallery 캡션 (실제 지명 alt 필수)",
+        "의미 없는 빈 Card",
+        "Lorem ipsum / 준비 중"
+      ]
+    },
+    {
+      "id": "SCR-003",
+      "name": "통합 여행 준비",
+      "category": "core",
+      "route": "/travel-tools",
+      "page_entry": "src/app/travel-tools/page.tsx",
+      "mobile_variant": true,
+      "starter_template_forbidden": false,
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "section_order": [
+        "Intro (3단계 안내)",
+        "탭 (항공편 찾기 / 숙소 찾기 / 동행 구하기)",
+        "조건 입력 Form",
+        "요약 + 외부 이동 Action Card",
+        "비전달 고지 + Tip (x3)",
+        "동행 탭 (로그인 안내 또는 작성 Form + 안전 안내)"
+      ],
+      "key_components": [
+        "Header",
+        "Footer",
+        "StepGuide3",
+        "SegmentedTab",
+        "ConditionForm",
+        "SummaryActionCardSplit",
+        "TipChip",
+        "LoginGateCard",
+        "SafetyNoticeBox",
+        "MatePostWriteForm"
+      ],
+      "states": ["success", "error", "unauthorized"],
+      "user_actions": [
+        "탭 전환 (다른 탭 입력값 유지)",
+        "조건 입력·검증",
+        "요약 확인",
+        "외부 사이트로 이동 (새 탭, noopener/noreferrer, query 없음)",
+        "동행 모집글 작성 (인증 시) 또는 로그인 유도 확인"
+      ],
+      "desktop_mobile_rules": {
+        "desktop_reference_px": 1440,
+        "mobile_reference_px": 390,
+        "content_max_width_px": "1200-1280",
+        "section_padding_desktop_px": "64-96",
+        "section_padding_mobile_px": "40-64",
+        "tab_mobile_layout": "가로 스크롤 세그먼트",
+        "form_mobile_layout": "필드 전체 stacked"
+      },
+      "forbidden_features": [
+        "실시간 항공권·호텔 가격 표시",
+        "좌석 등급·인원수 등 과도한 예약형 UI 확장",
+        "동행 로그인 안내 섹션 중복 배치",
+        "입력값을 서버 API·DB·로그·분석에 저장",
+        "목적지·날짜를 외부 URL 쿼리에 포함"
+      ]
+    },
+    {
+      "id": "SCR-004",
+      "name": "동행 조회",
+      "category": "core",
+      "route": "/mates",
+      "page_entry": "src/app/mates/page.tsx",
+      "mobile_variant": false,
+      "starter_template_forbidden": false,
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "section_order": [
+        "Intro + 작성 CTA",
+        "Filter + 결과 요약",
+        "동행글 목록 (최대 8 Card)",
+        "목록 + 상세 (Desktop 좌우 분할 / Mobile 상세 Drawer)",
+        "신청 방법 3단계 안내",
+        "안전·신고·차단 안내 + CTA"
+      ],
+      "key_components": [
+        "Header",
+        "Footer",
+        "FilterBar",
+        "MatePostCard",
+        "ListDetailSplit",
+        "ParticipationRequestForm",
+        "StepGuide3",
+        "SafetyNoticeBox",
+        "EmptyStateBlock"
+      ],
+      "states": ["loading", "success", "empty", "error", "unauthorized"],
+      "user_actions": [
+        "Filter 적용/초기화",
+        "목록 Card 선택 → 상세 열람",
+        "참가 요청 전송",
+        "(작성자) 요청 승인/거절, 모집글 수동 마감/수정/삭제",
+        "신고·차단"
+      ],
+      "desktop_mobile_rules": {
+        "desktop_reference_px": 1440,
+        "mobile_reference_px": null,
+        "content_max_width_px": "1200-1280",
+        "section_padding_desktop_px": "64-96",
+        "section_padding_mobile_px": null,
+        "note": "이번 범위에서 Mobile 변형 Screen은 승인 대상 아님"
+      },
+      "forbidden_features": [
+        "별점 표시",
+        "가격 표시",
+        "매너온도/본인인증 완료 외의 숫자 평점·리뷰 점수",
+        "전화번호·이메일 등 공개 연락처 노출",
+        "Dashboard/통계성 레이아웃"
+      ]
+    },
+    {
+      "id": "SCR-005",
+      "name": "계정·관리",
+      "category": "core",
+      "route": "/account",
+      "page_entry": "src/app/account/page.tsx",
+      "mobile_variant": false,
+      "starter_template_forbidden": false,
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "section_order_by_role": {
+        "guest": ["계정 Intro", "로그인/가입/비밀번호 재설정 Card", "로그인 후 가능한 기능 안내", "보안 안내"],
+        "member": ["프로필·성인 확인 요약", "내 글", "참가 요청", "차단 목록", "즐겨찾기 목록", "새 동행글 작성 CTA"],
+        "admin": ["관리 Intro", "신고 상태 변경 (+대상 글 숨김)", "항공·숙소 외부 URL 설정"]
+      },
+      "key_components": [
+        "Header",
+        "Footer",
+        "AuthForm",
+        "AdultVerificationCheck",
+        "ProfileForm",
+        "ListCard(내 글/참가요청/차단/즐겨찾기)",
+        "EmptyStateBlock",
+        "AdminReportQueueFilter",
+        "OutboundUrlSettingForm"
+      ],
+      "states": ["loading", "success", "empty", "error", "unauthorized"],
+      "user_actions": [
+        "로그인/가입/비밀번호 재설정",
+        "성인 인증",
+        "프로필 수정",
+        "내 글/참가 요청 관리",
+        "즐겨찾기 목록에서 여행지로 이동",
+        "차단 해제",
+        "(Admin) 신고 상태 변경·외부 URL 저장"
+      ],
+      "desktop_mobile_rules": {
+        "desktop_reference_px": 1440,
+        "mobile_reference_px": null,
+        "content_max_width_px": "1200-1280",
+        "section_padding_desktop_px": "64-96",
+        "section_padding_mobile_px": null,
+        "note": "역할에 없는 탭은 렌더링하지 않음. 이번 범위에서 Mobile 변형 Screen은 승인 대상 아님"
+      },
+      "forbidden_features": [
+        "Dashboard/통계 화면",
+        "역할에 없는 탭 렌더링",
+        "관리자 범위를 신고 상태·외부 URL 설정 이외로 확장 (콘텐츠 CRUD, 범용 감사 로그 등)"
+      ]
+    }
+  ],
+  "technical_routes": [
+    {
+      "type": "auth_callback",
+      "route": "/auth/callback",
+      "page_entry": "src/app/auth/callback/route.ts",
+      "counted_as_screen": false,
+      "purpose": "Supabase Auth 리다이렉트 처리 전용 Route Handler"
+    },
+    {
+      "type": "api_route",
+      "route": "/api/**",
+      "page_entry": "src/app/api/**/route.ts",
+      "counted_as_screen": false,
+      "purpose": "서버 응답 전용 Route Handler (동행글, 참가 요청, 신고, 차단, 관리자 설정 등)"
+    },
+    {
+      "type": "not_found",
+      "route": "*",
+      "page_entry": "src/app/not-found.tsx",
+      "counted_as_screen": false,
+      "purpose": "404 오류 처리 전용 화면, 최소 1개 이상의 복구 행동(홈/이전/재시도) 필요"
+    },
+    {
+      "type": "error_boundary",
+      "route": "*",
+      "page_entry": "src/app/error.tsx",
+      "counted_as_screen": false,
+      "purpose": "500/런타임 오류 처리 전용 화면, 재시도 행동 필요 (04_UIUX_PLAN.md 오류 상태 규칙 대응)"
+    }
+  ],
+  "required_navigation": [
+    { "from": "SCR-001", "to": "SCR-003", "trigger": "Hero CTA / 동행 Empty State CTA" },
+    { "from": "SCR-001", "to": "SCR-004", "trigger": "동행 섹션 '모두 보기'" },
+    { "from": "SCR-001", "to": "SCR-002", "trigger": "대표 소개 밴드 CTA" },
+    { "from": "SCR-001", "to": "SCR-005", "trigger": "비로그인 상태에서 참가·작성류 액션 시도" },
+    { "from": "SCR-002", "to": "SCR-001", "trigger": "추천 여행지 Card / 방문국가 Chip 선택" },
+    { "from": "SCR-002", "to": "SCR-003", "trigger": "'항공·숙소 준비하기' CTA" },
+    { "from": "SCR-002", "to": "SCR-004", "trigger": "'동행 찾기' CTA" },
+    { "from": "SCR-003", "to": "external", "trigger": "항공/숙소 외부 파트너 사이트 이동 (새 탭, Screen 아님)" },
+    { "from": "SCR-003", "to": "SCR-005", "trigger": "동행 탭에서 비로그인/성인 미인증 시 로그인 유도" },
+    { "from": "SCR-003", "to": "SCR-004", "trigger": "동행 모집글 작성 완료 후 이동" },
+    { "from": "SCR-004", "to": "SCR-003", "trigger": "동행 모집글 작성 CTA → 동행 구하기 탭" },
+    { "from": "SCR-004", "to": "SCR-005", "trigger": "비로그인 상태에서 참가 요청/작성 시도" },
+    { "from": "SCR-005", "to": "SCR-004", "trigger": "내 글/참가 요청 Card 선택 시 상세" },
+    { "from": "SCR-005", "to": "SCR-001", "trigger": "즐겨찾기 Card 선택 시 상세 Drawer" },
+    { "from": "SCR-005", "to": "SCR-003", "trigger": "새 동행글 작성 CTA" }
+  ],
+  "completion_checks": {
+    "route_uniqueness": "PASS — 5개 Route 모두 고유 (/  /about  /travel-tools  /mates  /account)",
+    "page_entry_uniqueness": "PASS — 5개 Page Entry 모두 고유",
+    "screen_count": 5,
+    "core_supporting_split": {
+      "core": ["SCR-001", "SCR-003", "SCR-004", "SCR-005"],
+      "supporting": ["SCR-002"]
+    }
+  }
+}
