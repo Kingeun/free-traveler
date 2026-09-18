@@ -100,7 +100,13 @@
       ],
       "status": "pending",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "task_status": {
+        "API-ADMIN-SETTINGS": "pending",
+        "API-AUTH-PROFILE": "pending",
+        "API-BLOCKS-REPORTS": "pending",
+        "API-MATE-POSTS": "pending"
+      }
     },
     {
       "wave_id": "W07",
