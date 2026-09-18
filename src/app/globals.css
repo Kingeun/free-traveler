@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * design-reference/D-001/DESIGN.md의 Color Token / Typography / Spacing / Radius /
+ * Shadow 표를 그대로 옮긴 토큰이다. 다크 모드는 없다(D-001 Visual Theme).
+ * 새 색상이 필요하면 이 블록이 아니라 DESIGN.md의 Color Token 표를 먼저 갱신한다.
+ */
+@theme {
+  --color-canvas: #ffffff;
+  --color-surface-soft: #f7f6f4;
+  --color-surface-strong: #efedea;
+  --color-ink: #2b2e33;
+  --color-body: #4a4e54;
+  --color-muted: #6b7078;
+  --color-hairline: #e2e0dd;
+  --color-border-strong: #c7c4c0;
+  --color-primary: #ff6f59;
+  --color-primary-active: #e6543f;
+  --color-primary-disabled: #ffd9ce;
+  --color-on-primary: #ffffff;
+  --color-success: #2e8b57;
+  --color-warning: #b25e00;
+  --color-danger: #c6362e;
+  --color-focus-ring: #1f6feb;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans:
+    "Inter", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --text-display-xl: 36px;
+  --text-display-xl--line-height: 1.3;
+  --text-display-lg: 28px;
+  --text-display-lg--line-height: 1.35;
+  --text-display-md: 22px;
+  --text-display-md--line-height: 1.4;
+  --text-title-md: 18px;
+  --text-title-md--line-height: 1.45;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.55;
+  --text-caption: 13px;
+  --text-caption--line-height: 1.4;
+  --text-button: 16px;
+  --text-button--line-height: 1.3;
+
+  --font-weight-display-xl: 700;
+  --font-weight-display-lg: 700;
+  --font-weight-display-md: 600;
+  --font-weight-title-md: 600;
+  --font-weight-body-md: 400;
+  --font-weight-body-sm: 400;
+  --font-weight-caption: 500;
+  --font-weight-button: 600;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-card-hover:
+    0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }

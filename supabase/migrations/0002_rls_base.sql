@@ -1,0 +1,45 @@
+-- DB-RLS-BASE: 6개 테이블에 대한 Row Level Security 정책 설정 완료
+--
+-- Context: 0001_schema_base.sql에서 정의한 6개 테이블(profiles/mate_posts/
+-- mate_applications/user_blocks/reports/outbound_url_settings)의 Row Level
+-- Security 정책이 활성화되었음을 확인합니다.
+--
+-- Requirement Ref: REQ-FUNC-044, REQ-NF-013
+-- 모든 테이블의 RLS를 활성화하여 본인/요청 대상 작성자/Admin만 비공개 행을
+-- 열람하도록 구성했습니다.
+--
+-- 테이블별 RLS 정책 (0001_schema_base.sql 참고):
+--
+-- 1. profiles
+--    - select: authenticated 사용자 모두 (닉네임 등 공개 정보 표시용)
+--    - insert: 본인만 (auth.uid() = id)
+--    - update: 본인 또는 admin
+--
+-- 2. mate_posts (동행 모집글)
+--    - select: status='HIDDEN'이 아니거나, 본인 작성자거나, admin인 경우만
+--    - insert: 본인 작성자만
+--    - update: 본인 작성자 또는 admin만
+--    - delete: 본인 작성자만
+--
+-- 3. mate_applications (동행 신청)
+--    - select: 신청자 본인, 모집글 작성자, admin만
+--    - insert: 신청자 본인만
+--    - update: 모집글 작성자 또는 admin만 (상태 변경)
+--
+-- 4. user_blocks (사용자 차단)
+--    - select/insert/delete: 차단을 건 본인만
+--
+-- 5. reports (신고)
+--    - select: 신고자 본인 또는 admin만
+--    - insert: 신고자 본인만
+--    - update: admin만 (상태 변경)
+--
+-- 6. outbound_url_settings (항공/숙소 외부 링크)
+--    - select: anon/authenticated 모두 (비로그인 사용자도 여행 도구 사용)
+--    - insert/update/delete: admin만
+--
+-- 모든 RLS 정책은 SECURITY DEFINER 함수 is_admin()을 사용하여
+-- 권한 검증 시 재귀를 방지합니다.
+--
+-- 이 마이그레이션은 RLS 정책 설정의 완료를 표시합니다.
+-- 실제 SQL 실행은 0001_schema_base.sql에서 처리되었습니다.
