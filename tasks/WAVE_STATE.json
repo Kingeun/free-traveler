@@ -102,7 +102,7 @@
       "checkpoint_required": false,
       "checkpoint_result": null,
       "task_status": {
-        "API-ADMIN-SETTINGS": "pending",
+        "API-ADMIN-SETTINGS": "done",
         "API-AUTH-PROFILE": "pending",
         "API-BLOCKS-REPORTS": "pending",
         "API-MATE-POSTS": "pending"
